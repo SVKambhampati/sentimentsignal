@@ -27,20 +27,16 @@ def create_app():
     app.config["JWT_COOKIE_CSRF_PROTECT"] = False
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=30)
 
-    # Allow local dev + any Vercel deployment URL + explicit FRONTEND_URL
-    allowed_origins = [
-        "http://localhost:5173",
-        "http://localhost:5174",
-        re.compile(r"^https://.*\.vercel\.app$"),
-    ]
+    # Allow local dev + any *.vercel.app deployment + optional FRONTEND_URL override.
+    # Single compiled regex — flask-cors doesn't support mixed lists of strings + patterns.
     frontend_url = os.getenv("FRONTEND_URL", "").strip()
-    if frontend_url:
-        allowed_origins.append(frontend_url)
+    extra = (re.escape(frontend_url) + "|") if frontend_url else ""
+    origin_pattern = re.compile(
+        rf"^({extra}http://localhost:(5173|5174)|https://[^/]+\.vercel\.app)$"
+    )
+    print(f"[cors] origin pattern: {origin_pattern.pattern}")
 
-    print(f"[cors] allowed origins: localhost:5173/5174 + *.vercel.app"
-          + (f" + {frontend_url}" if frontend_url else ""))
-
-    CORS(app, origins=allowed_origins, supports_credentials=True)
+    CORS(app, origins=origin_pattern, supports_credentials=True)
 
     from app.extensions import bcrypt, db, jwt
 
