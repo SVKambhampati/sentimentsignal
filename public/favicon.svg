@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <!-- Dark rounded background -->
-  <rect width="32" height="32" rx="7" fill="#0a0a0a"/>
+  <rect width="32" height="32" rx="7" fill="#080808"/>
 
   <!-- Subtle base line -->
-  <line x1="4" y1="26" x2="28" y2="26" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="4" y1="26" x2="28" y2="26" stroke="#1e1e1e" stroke-width="1"/>
 
   <!-- Rising trend line -->
   <polyline
     points="5,22 10,18 17,13 23,9"
     fill="none"
-    stroke="#22c55e"
+    stroke="#22d3ee"
     stroke-width="2.2"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
 
   <!-- Signal dot: outer glow ring -->
-  <circle cx="23" cy="9" r="4" fill="#22c55e" opacity="0.18"/>
+  <circle cx="23" cy="9" r="4" fill="#22d3ee" opacity="0.18"/>
   <!-- Signal dot: solid core -->
-  <circle cx="23" cy="9" r="2.2" fill="#22c55e"/>
+  <circle cx="23" cy="9" r="2.2" fill="#22d3ee"/>
 </svg>

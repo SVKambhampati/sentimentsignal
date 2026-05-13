@@ -373,7 +373,7 @@ function StockCard({ item, listId }: { item: WatchlistItem; listId: number }) {
           </span>
           {detail?.change_pct != null && (
             <span className="text-[11px] font-bold tabular-nums"
-              style={{ color: up ? 'var(--accent)' : 'var(--red)', ...MONO }}>
+              style={{ color: up ? 'var(--green)' : 'var(--red)', ...MONO }}>
               {up ? '▲' : '▼'} {Math.abs(detail.change_pct).toFixed(2)}%
             </span>
           )}

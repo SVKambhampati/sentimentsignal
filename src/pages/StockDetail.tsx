@@ -1301,7 +1301,7 @@ export function StockDetail() {
                     <div key={s.source} className="flex items-center gap-2">
                       <span className="text-[10px] w-32 truncate" style={{ color: 'var(--text-muted)', ...MONO_S }}>{s.source}</span>
                       <div className="flex-1 h-1.5 rounded-full" style={{ background: 'var(--border)' }}>
-                        <div className="h-full rounded-full" style={{ width: `${s.pct}%`, background: 'var(--accent)' }} />
+                        <div className="h-full rounded-full" style={{ width: `${s.pct}%`, background: 'var(--green)' }} />
                       </div>
                       <span className="text-[10px] w-8 text-right" style={{ color: 'var(--text-muted)', ...MONO_S }}>{s.pct}%</span>
                     </div>

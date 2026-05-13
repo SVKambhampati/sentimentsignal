@@ -11,7 +11,7 @@ import { staggerContainer, staggerItem } from '../components/PageEnter';
 const MONO: React.CSSProperties = { fontFamily: "'IBM Plex Mono', monospace" };
 
 function sentimentColor(score: number): string {
-  if (score >= 0.05)  return 'var(--accent)';
+  if (score >= 0.05)  return 'var(--green)';
   if (score <= -0.05) return 'var(--red)';
   return 'var(--text-muted)';
 }
@@ -210,7 +210,7 @@ export function Compare() {
       {/* Page header */}
       <motion.div variants={staggerItem} className="space-y-1">
         <div className="flex items-center gap-2">
-          <BarChart2 size={14} style={{ color: 'var(--accent)' }} />
+          <BarChart2 size={14} style={{ color: 'var(--green)' }} />
           <span
             className="text-[9px] font-black uppercase tracking-widest"
             style={{ color: 'var(--accent)', ...MONO }}

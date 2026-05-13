@@ -12,7 +12,7 @@ type SentimentFilter = 'all' | 'bullish' | 'bearish';
 type SortBy = 'mentions' | 'sentiment' | 'credibility';
 
 function sentimentColor(score: number): string {
-  if (score >= 0.05)  return 'var(--accent)';
+  if (score >= 0.05)  return 'var(--green)';
   if (score <= -0.05) return 'var(--red)';
   return 'var(--text-muted)';
 }

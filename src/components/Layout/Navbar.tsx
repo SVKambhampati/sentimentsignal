@@ -64,8 +64,8 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40" style={{ backgroundColor: 'var(--bg-page)' }}>
-      {/* Accent stripe */}
-      <div className="h-[3px] w-full" style={{ backgroundColor: 'var(--accent)' }} />
+      {/* Accent stripe — thin cyan glow line */}
+      <div className="nav-stripe h-px w-full" style={{ backgroundColor: 'var(--accent)' }} />
 
       {/* Main bar */}
       <div className="border-b" style={{ borderColor: 'var(--border)' }}>

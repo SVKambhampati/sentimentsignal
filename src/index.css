@@ -10,32 +10,36 @@
   --text-primary: #0f0f0f;
   --text-secondary: #525252;
   --text-muted: #9a9a9a;
-  --accent: #166534;
-  --accent-dim: rgba(22, 101, 52, 0.08);
+  --accent: #0891b2;
+  --accent-dim: rgba(8, 145, 178, 0.08);
+  --accent-subtle: rgba(8, 145, 178, 0.05);
+  --green: #166534;
+  --green-dim: rgba(22, 101, 52, 0.08);
   --red: #991b1b;
   --red-dim: rgba(153, 27, 27, 0.06);
   --graphic-stroke: rgba(0, 0, 0, 0.07);
-  --graphic-fill: rgba(22, 101, 52, 0.04);
-  --accent-subtle: rgba(22, 101, 52, 0.05);
+  --graphic-fill: rgba(8, 145, 178, 0.04);
 }
 
 .dark {
-  --bg-page: #0a0a0a;
-  --bg-surface: #111111;
-  --bg-elevated: #1a1a1a;
-  --border: #242424;
-  --border-hover: #3a3a3a;
-  --border-strong: #505050;
+  --bg-page: #080808;
+  --bg-surface: #0e0e0e;
+  --bg-elevated: #151515;
+  --border: #1e1e1e;
+  --border-hover: #2e2e2e;
+  --border-strong: #404040;
   --text-primary: #f0f0f0;
   --text-secondary: #9a9a9a;
-  --text-muted: #545454;
-  --accent: #22c55e;
-  --accent-dim: rgba(34, 197, 94, 0.08);
+  --text-muted: #4a4a4a;
+  --accent: #22d3ee;
+  --accent-dim: rgba(34, 211, 238, 0.08);
+  --accent-subtle: rgba(34, 211, 238, 0.05);
+  --green: #22c55e;
+  --green-dim: rgba(34, 197, 94, 0.08);
   --red: #ef4444;
   --red-dim: rgba(239, 68, 68, 0.08);
-  --graphic-stroke: rgba(255, 255, 255, 0.06);
-  --graphic-fill: rgba(34, 197, 94, 0.04);
-  --accent-subtle: rgba(34, 197, 94, 0.06);
+  --graphic-stroke: rgba(255, 255, 255, 0.05);
+  --graphic-fill: rgba(34, 211, 238, 0.04);
 }
 
 @layer base {
@@ -45,6 +49,12 @@
     font-family: "Syne", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
+  }
+
+  /* Palantir-style dot-grid texture (dark mode only) */
+  .dark body {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.032) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 }
 
@@ -106,6 +116,17 @@
 @keyframes border-pulse {
   0%, 100% { box-shadow: 0 0 0 0 transparent; }
   50%       { box-shadow: 0 0 0 2px var(--accent-dim); }
+}
+
+/* Cyan scan-line sweep for the nav stripe */
+@keyframes scan-sweep {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+.nav-stripe {
+  animation: scan-sweep 3s ease-in-out infinite;
+  box-shadow: 0 0 12px 0 var(--accent), 0 0 32px 0 var(--accent-dim);
 }
 
 /* Verge-style category label accent */

@@ -119,7 +119,7 @@ function PriceChange({ pct }: { pct: number | null }) {
   return (
     <span
       className="inline-flex items-center gap-0.5 text-[11px] tabular-nums font-semibold"
-      style={{ color: up ? 'var(--accent)' : 'var(--red)', ...MONO }}
+      style={{ color: up ? 'var(--green)' : 'var(--red)', ...MONO }}
     >
       {up ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
       {Math.abs(pct).toFixed(2)}%
@@ -208,7 +208,7 @@ function TickerTape() {
               )}
               <span
                 className="font-bold"
-                style={{ color: up ? 'var(--accent)' : 'var(--red)' }}
+                style={{ color: up ? 'var(--green)' : 'var(--red)' }}
               >
                 {up ? '▲' : '▼'} {Math.abs(stock.change_pct ?? 0).toFixed(2)}%
               </span>
@@ -255,7 +255,7 @@ interface SentLevel {
 
 function getSentLevel(score: number): SentLevel {
   if (score >= 0.35)  return { label: 'Strongly Bullish', short: 'Strong Bull', icon: '▲▲', color: '#16a34a', bg: 'rgba(22,163,74,0.12)',  borderColor: '#16a34a' };
-  if (score >= 0.05)  return { label: 'Bullish',          short: 'Bullish',     icon: '▲',  color: 'var(--accent)', bg: 'rgba(34,197,94,0.1)', borderColor: 'var(--accent)' };
+  if (score >= 0.05)  return { label: 'Bullish',          short: 'Bullish',     icon: '▲',  color: 'var(--green)', bg: 'rgba(34,197,94,0.1)', borderColor: 'var(--green)' };
   if (score <= -0.35) return { label: 'Strongly Bearish', short: 'Strong Bear', icon: '▼▼', color: '#b91c1c', bg: 'rgba(185,28,28,0.12)',  borderColor: '#b91c1c' };
   if (score <= -0.05) return { label: 'Bearish',          short: 'Bearish',     icon: '▼',  color: 'var(--red)', bg: 'rgba(239,68,68,0.1)',  borderColor: 'var(--red)' };
   return { label: 'Neutral', short: 'Neutral', icon: '●', color: '#d97706', bg: 'rgba(217,119,6,0.1)', borderColor: '#d97706' };
@@ -460,7 +460,7 @@ function SentimentChart({ stocks }: { stocks: TrendingStock[] }) {
                 <Cell
                   key={entry.symbol}
                   fill={
-                    entry.score >= 0.05  ? 'var(--accent)' :
+                    entry.score >= 0.05  ? 'var(--green)' :
                     entry.score <= -0.05 ? 'var(--red)'    : '#d97706'
                   }
                   fillOpacity={0.8}
@@ -536,7 +536,7 @@ function StockTile({ stock }: { stock: TrendingStock }) {
         {/* Change arrow + pct below price */}
         <span
           className="text-[11px] font-bold tabular-nums flex items-center gap-0.5"
-          style={{ color: up ? 'var(--accent)' : 'var(--red)', ...MONO }}
+          style={{ color: up ? 'var(--green)' : 'var(--red)', ...MONO }}
         >
           {up ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
           {Math.abs(stock.change_pct ?? 0).toFixed(2)}%
@@ -675,7 +675,7 @@ function HeroCard({ mention }: { mention: Mention }) {
       style={{ borderColor: 'var(--border)' }}
     >
       {/* Full-width accent line at top */}
-      <div className="h-[3px] w-full mb-6" style={{ backgroundColor: 'var(--accent)' }} />
+      <div className="nav-stripe h-px w-full mb-6" style={{ backgroundColor: 'var(--accent)' }} />
 
       <div className="flex gap-4 sm:gap-6">
         <div className="flex-1 min-w-0">
@@ -701,7 +701,7 @@ function HeroCard({ mention }: { mention: Mention }) {
               <span className="text-[11px] font-black tabular-nums" style={{ color: 'var(--text-secondary)', ...MONO }}>
                 ${priceInfo.price.toFixed(2)}
                 {priceInfo.change_pct != null && (
-                  <span style={{ color: priceInfo.change_pct >= 0 ? 'var(--accent)' : 'var(--red)' }}>
+                  <span style={{ color: priceInfo.change_pct >= 0 ? 'var(--green)' : 'var(--red)' }}>
                     {' '}{priceInfo.change_pct >= 0 ? '+' : ''}{priceInfo.change_pct.toFixed(2)}%
                   </span>
                 )}
@@ -825,7 +825,7 @@ function StreamCard({ mention }: { mention: Mention }) {
             <span className="text-[10px] tabular-nums font-bold" style={{ color: 'var(--text-muted)', ...MONO }}>
               ${priceInfo.price.toFixed(2)}
               {priceInfo.change_pct != null && (
-                <span style={{ color: priceInfo.change_pct >= 0 ? 'var(--accent)' : 'var(--red)' }}>
+                <span style={{ color: priceInfo.change_pct >= 0 ? 'var(--green)' : 'var(--red)' }}>
                   {' '}{priceInfo.change_pct >= 0 ? '+' : ''}{priceInfo.change_pct.toFixed(2)}%
                 </span>
               )}
@@ -871,7 +871,7 @@ function CompactCard({ mention }: { mention: Mention }) {
   const isHighCred = mention.credibility_score >= 80;
   const sentScore = mention.sentiment_score ?? 0;
   const dotColor = sentScore >= 0.05
-    ? 'var(--accent)'
+    ? 'var(--green)'
     : sentScore <= -0.05
     ? 'var(--red)'
     : 'var(--text-muted)';
@@ -1586,7 +1586,7 @@ function MoversSidebar() {
                   )}
                   <span
                     className="text-[11px] font-bold tabular-nums"
-                    style={{ color: up ? 'var(--accent)' : 'var(--red)', ...MONO }}
+                    style={{ color: up ? 'var(--green)' : 'var(--red)', ...MONO }}
                   >
                     {up ? '▲' : '▼'} {Math.abs(delta * 100).toFixed(0)}%
                   </span>
@@ -1596,7 +1596,7 @@ function MoversSidebar() {
               <div className="mt-1.5 h-[2px] w-full" style={{ backgroundColor: 'var(--bg-elevated)' }}>
                 <motion.div
                   className="h-full"
-                  style={{ backgroundColor: up ? 'var(--accent)' : 'var(--red)' }}
+                  style={{ backgroundColor: up ? 'var(--green)' : 'var(--red)' }}
                   initial={{ width: 0 }}
                   animate={{ width: `${barWidth}%` }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.1 }}
