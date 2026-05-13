@@ -5,6 +5,8 @@ checks price alerts, and sends weekly watchlist digests.
 Strategy:
   Every INGEST_INTERVAL_MINUTES (default 30), we:
     1. Query the top N tickers by recent mention count.
+       If the DB is empty / stale, fall back to a default seed list so the
+       scheduler can bootstrap itself on a fresh deployment.
     2. Ingest fresh news for each ticker (Finnhub + RSS + NewsAPI in parallel).
     3. Bust the in-process cache so the next API hit returns new data.
 
@@ -18,6 +20,13 @@ The scheduler runs in daemon threads so they die cleanly with the process.
 It is safe to use under Flask's dev server (single-process) or any WSGI
 server that runs a single worker process (Gunicorn --workers=1).
 """
+
+# Default seed list — used when the DB has no recent data (fresh deploy / cold start)
+DEFAULT_SEED_TICKERS = [
+    "AAPL", "MSFT", "NVDA", "TSLA", "AMZN", "GOOGL", "META", "AMD",
+    "PLTR", "SOFI", "SPY", "QQQ", "COIN", "ARM", "AVGO", "JPM",
+    "BAC", "RIVN", "F", "MSTR",
+]
 from __future__ import annotations
 
 import threading
@@ -53,8 +62,8 @@ def _run_cycle(app, top_n: int = 20) -> None:
         return
 
     if not tickers:
-        print("[scheduler] no trending tickers found, skipping cycle")
-        return
+        print("[scheduler] no trending tickers in DB — using default seed list to bootstrap")
+        tickers = DEFAULT_SEED_TICKERS
 
     print(f"[scheduler] ingesting {len(tickers)} tickers: {', '.join(tickers)}")
     ok = 0

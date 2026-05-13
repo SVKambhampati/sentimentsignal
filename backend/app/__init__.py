@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import timedelta
 
 from flask import Flask
@@ -26,11 +27,18 @@ def create_app():
     app.config["JWT_COOKIE_CSRF_PROTECT"] = False
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=30)
 
-    # Allow both local dev and the deployed Vercel frontend
-    allowed_origins = ["http://localhost:5173"]
-    frontend_url = os.getenv("FRONTEND_URL", "")
+    # Allow local dev + any Vercel deployment URL + explicit FRONTEND_URL
+    allowed_origins = [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        re.compile(r"^https://.*\.vercel\.app$"),
+    ]
+    frontend_url = os.getenv("FRONTEND_URL", "").strip()
     if frontend_url:
         allowed_origins.append(frontend_url)
+
+    print(f"[cors] allowed origins: localhost:5173/5174 + *.vercel.app"
+          + (f" + {frontend_url}" if frontend_url else ""))
 
     CORS(app, origins=allowed_origins, supports_credentials=True)
 
