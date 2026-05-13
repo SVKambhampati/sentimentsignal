@@ -56,12 +56,12 @@ function Field({ label, value }: { label: string; value: string }) {
 }
 
 const ACCENT_PRESETS = [
-  { label: 'Green',   value: '#22c55e' },
+  { label: 'Cyan',    value: '#22d3ee' },
   { label: 'Blue',    value: '#3b82f6' },
   { label: 'Purple',  value: '#a855f7' },
   { label: 'Orange',  value: '#f97316' },
   { label: 'Rose',    value: '#f43f5e' },
-  { label: 'Cyan',    value: '#06b6d4' },
+  { label: 'Green',   value: '#22c55e' },
   { label: 'Yellow',  value: '#eab308' },
   { label: 'White',   value: '#f0f0f0' },
 ];

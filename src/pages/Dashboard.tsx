@@ -1438,19 +1438,19 @@ function MostActiveSidebar() {
   return (
     <div
       className="p-5"
-      style={{ backgroundColor: 'var(--accent)' }}
+      style={{ backgroundColor: 'var(--bg-surface)', borderTop: '2px solid var(--accent)' }}
     >
       {/* Header */}
-      <div className="mb-4 pb-3 border-b" style={{ borderColor: 'rgba(0,0,0,0.2)' }}>
+      <div className="mb-4 pb-3 border-b" style={{ borderColor: 'var(--border)' }}>
         <p
           className="text-[9px] font-black uppercase tracking-widest mb-1"
-          style={{ color: 'rgba(0,0,0,0.5)', ...MONO }}
+          style={{ color: 'var(--accent)', ...MONO }}
         >
           Right now
         </p>
         <h3
           className="text-sm font-black uppercase tracking-widest leading-none"
-          style={{ color: 'var(--bg-page)', ...MONO }}
+          style={{ color: 'var(--text-primary)', ...MONO }}
         >
           Most Active
         </h3>
@@ -1473,13 +1473,13 @@ function MostActiveSidebar() {
             <Link
               to={`/app/stock/${stock.symbol}`}
               className="flex items-center gap-3 py-3 border-b group transition-all hover:opacity-90 hover:pl-1"
-              style={{ borderColor: 'rgba(0,0,0,0.15)' }}
+              style={{ borderColor: 'var(--border)' }}
             >
               {/* Big rank number with sentiment dot top-right */}
               <div className="relative w-8 shrink-0">
                 <span
                   className="text-3xl font-black leading-none tabular-nums"
-                  style={{ color: 'rgba(0,0,0,0.25)', ...MONO }}
+                  style={{ color: 'var(--border-strong)', ...MONO }}
                 >
                   {i + 1}
                 </span>
@@ -1502,7 +1502,7 @@ function MostActiveSidebar() {
               <div className="flex-1 min-w-0">
                 <div
                   className="text-sm font-black uppercase"
-                  style={{ color: 'var(--bg-page)', ...MONO }}
+                  style={{ color: 'var(--text-primary)', ...MONO }}
                 >
                   {stock.symbol}
                 </div>
@@ -1510,7 +1510,7 @@ function MostActiveSidebar() {
                   {stock.price != null && (
                     <span
                       className="text-[11px] tabular-nums"
-                      style={{ color: 'rgba(0,0,0,0.55)', ...MONO }}
+                      style={{ color: 'var(--text-secondary)', ...MONO }}
                     >
                       ${stock.price.toFixed(2)}
                     </span>
@@ -1519,7 +1519,7 @@ function MostActiveSidebar() {
                     <span
                       className="text-[11px] font-bold tabular-nums"
                       style={{
-                        color: stock.change_pct >= 0 ? 'rgba(0,0,0,0.65)' : 'rgba(200,0,0,0.75)',
+                        color: stock.change_pct >= 0 ? 'var(--green)' : 'var(--red)',
                         ...MONO,
                       }}
                     >

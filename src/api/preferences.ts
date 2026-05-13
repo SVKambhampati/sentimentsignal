@@ -9,7 +9,7 @@ export interface UserPreferences {
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {
-  accent_color:      '#22c55e',
+  accent_color:      '#22d3ee',
   default_timeframe: '1M',
   density:           'comfortable',
   hidden_sections:   [],

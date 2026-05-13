@@ -49,11 +49,14 @@ export const usePreferences = create<PreferencesState>()(
 export function applyPreferences(prefs: UserPreferences) {
   const root = document.documentElement;
 
+  // Migrate: old green default → new cyan default
+  const accentColor = prefs.accent_color === '#22c55e' ? '#22d3ee' : prefs.accent_color;
+
   // Accent color
-  root.style.setProperty('--accent', prefs.accent_color);
+  root.style.setProperty('--accent', accentColor);
 
   // Derive dim + subtle variants from accent hex
-  const hex = prefs.accent_color.replace('#', '');
+  const hex = accentColor.replace('#', '');
   const r   = parseInt(hex.slice(0, 2), 16);
   const g   = parseInt(hex.slice(2, 4), 16);
   const b   = parseInt(hex.slice(4, 6), 16);
