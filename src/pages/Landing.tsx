@@ -89,20 +89,13 @@ export function Landing() {
             SENTIMENTSIGNAL
           </span>
 
-          <div className="hidden sm:flex items-center gap-6">
-            {[
-              { label: 'SYSTEM', value: 'LIVE', accent: true, blink: true },
-              { label: 'ENGINE', value: 'ACTIVE' },
-              { label: 'SOURCES', value: '50+' },
-            ].map(item => (
-              <span key={item.label} className="flex items-center gap-1.5 text-[9px] tracking-widest uppercase" style={{ color: 'var(--text-muted)', ...MONO }}>
-                {item.blink && (
-                  <span style={{ color: 'var(--accent)', opacity: blink ? 1 : 0.25, transition: 'opacity 0.15s' }}>●</span>
-                )}
-                <span>{item.label}:</span>
-                <span style={{ color: item.accent ? 'var(--accent)' : 'var(--text-secondary)' }}>{item.value}</span>
-              </span>
-            ))}
+          <div className="hidden sm:flex items-center gap-6 text-[9px] uppercase tracking-widest" style={{ color: 'var(--text-muted)', ...MONO }}>
+            <span className="flex items-center gap-1.5 whitespace-nowrap">
+              <span style={{ color: 'var(--accent)', opacity: blink ? 1 : 0.25, transition: 'opacity 0.15s' }}>●</span>
+              <span>System: </span><span style={{ color: 'var(--accent)' }}>Live</span>
+            </span>
+            <span className="whitespace-nowrap">Engine: <span style={{ color: 'var(--text-secondary)' }}>Active</span></span>
+            <span className="whitespace-nowrap">Sources: <span style={{ color: 'var(--text-secondary)' }}>50+</span></span>
           </div>
 
           <div className="flex items-center gap-3">

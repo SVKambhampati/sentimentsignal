@@ -56,6 +56,19 @@
     background-image: radial-gradient(circle, rgba(255,255,255,0.032) 1px, transparent 1px);
     background-size: 28px 28px;
   }
+
+  /* Film grain overlay — applied via fixed pseudo-element on root */
+  #root::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.055;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
 }
 
 ::-webkit-scrollbar {
