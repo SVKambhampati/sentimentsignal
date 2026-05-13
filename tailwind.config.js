@@ -6,6 +6,17 @@ export default {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        'none': '0px',
+        'sm':   '2px',
+        DEFAULT: '2px',
+        'md':   '2px',
+        'lg':   '3px',
+        'xl':   '4px',
+        '2xl':  '4px',
+        '3xl':  '4px',
+        'full': '9999px',
+      },
       colors: {
         primary: {
           50: '#f0fdfa',

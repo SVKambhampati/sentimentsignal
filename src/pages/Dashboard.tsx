@@ -133,21 +133,19 @@ function SectionHeader({ title, meta, accent = false }: { title: string; meta?: 
   return (
     <div
       className="flex items-center gap-3 pb-3 mb-0"
-      style={{
-        borderBottom: accent ? '4px solid var(--accent)' : '2px solid var(--text-primary)',
-      }}
+      style={{ borderBottom: '1px solid var(--border)' }}
     >
       {accent && (
-        <span style={{ color: 'var(--accent)', fontSize: '10px', lineHeight: 1 }}>■</span>
+        <div className="h-3 w-[2px] shrink-0" style={{ backgroundColor: 'var(--accent)' }} />
       )}
       <h2
-        className="text-[10px] font-black uppercase tracking-widest"
-        style={{ color: 'var(--text-primary)', ...MONO }}
+        className="text-[10px] font-bold uppercase tracking-widest"
+        style={{ color: accent ? 'var(--text-primary)' : 'var(--text-secondary)', ...MONO }}
       >
         {title}
       </h2>
       {meta && (
-        <span className="text-[9px] uppercase tracking-widest" style={{ color: 'var(--text-muted)', ...MONO }}>
+        <span className="text-[9px] uppercase tracking-[0.1em]" style={{ color: 'var(--text-muted)', ...MONO }}>
           {meta}
         </span>
       )}
